@@ -97,8 +97,14 @@ options:
 -vendor <hex>	Use given USB vendor id instead of default id
 -product <hex>	Use given USB product id instead of default id
 
+Note that you likley will need to use 'sudo' with mphidflahs on Linux.
+
 Example: To upload the program test.hex to the PIC and to reset the PIC thereafter
 the following command line can be used:
 
 	mphidflash -write test.hex -reset
+    
+Or for Linux:
+    sudo mphidflash -write test.hex -reset
+
 
