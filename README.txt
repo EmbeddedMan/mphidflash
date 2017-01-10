@@ -17,13 +17,17 @@ from the command line:
 	sudo apt-get install libhid-dev
 
 Assuming you're reading this as the README.txt alongside the source code,
-to compile mphidflash for a 32 or 64 bit system, in the Terminal window type:
+to compile mphidflash for a 32 or 64 bit x86 system, in the Terminal window type:
 
 	make mphidflash32
 
   or
 
 	make mphidflash64
+
+To compile for arm, run 
+
+        make mphidflasharm
 
 Then install with the command:
 

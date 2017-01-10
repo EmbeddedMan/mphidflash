@@ -42,6 +42,12 @@ mphidflash32: LDFLAGS += -m32
 mphidflash32: EXEC = mphidflash-$(VERSION_MAIN).$(VERSION_SUB)-$(SYSTEM)-32
 mphidflash32: mphidflash
 
+mphidflasharm: 
+mphidflasharm: 
+mphidflasharm: EXEC = mphidflash-$(VERSION_MAIN).$(VERSION_SUB)-$(SYSTEM)-arm
+mphidflasharm: mphidflash
+
+
 mphidflash: $(OBJS)
 	$(CC) $(OBJS) $(LDFLAGS) -o $(EXECPATH)/$(EXEC)
 	strip $(EXECPATH)/$(EXEC)
