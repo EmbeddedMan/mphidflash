@@ -42,6 +42,11 @@ mphidflash32: LDFLAGS += -m32
 mphidflash32: EXEC = mphidflash-$(VERSION_MAIN).$(VERSION_SUB)-$(SYSTEM)-32
 mphidflash32: mphidflash
 
+mphidflashpi: CFLAGS += -march=armv6 -mfloat-abi=hard -mfpu=vfp
+mphidflashpi: LDFAGS += 
+mphidflashpi: EXEC = mphidflash-$(VERSION_MAIN).$(VERSION_SUB)-$(SYSTEM)-pi
+mphidflashpi: mphidflash
+
 mphidflash: $(OBJS)
 	$(CC) $(OBJS) $(LDFLAGS) -o $(EXECPATH)/$(EXEC)
 	strip $(EXECPATH)/$(EXEC)
@@ -57,6 +62,9 @@ install32: mphidflash32
 
 install64: mphidflash64
 	cp $(EXECPATH)/mphidflash-$(VERSION_MAIN).$(VERSION_SUB)-$(SYSTEM)-64 /usr/local/bin/mphidflash
+
+installpi: mphidflashpi
+	cp $(EXECPATH)/mphidflash-$(VERSION_MAIN).$(VERSION_SUB)-$(SYSTEM)-pi /usr/local/bin/mphidflash
 
 clean:
 	rm -f *.o core
