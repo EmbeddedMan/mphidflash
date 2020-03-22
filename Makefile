@@ -42,6 +42,11 @@ mphidflash32: LDFLAGS += -m32
 mphidflash32: EXEC = mphidflash-$(VERSION_MAIN).$(VERSION_SUB)-$(SYSTEM)-32
 mphidflash32: mphidflash
 
+mphidflasharm: 
+mphidflasharm: 
+mphidflasharm: EXEC = mphidflash-$(VERSION_MAIN).$(VERSION_SUB)-$(SYSTEM)-arm
+mphidflasharm: mphidflash
+
 mphidflashpi: CFLAGS += -march=armv6 -mfloat-abi=hard -mfpu=vfp
 mphidflashpi: LDFAGS += 
 mphidflashpi: EXEC = mphidflash-$(VERSION_MAIN).$(VERSION_SUB)-$(SYSTEM)-pi
@@ -53,7 +58,7 @@ mphidflash: $(OBJS)
 
 install:
 	@echo
-	@echo Please make 'install32 or install64' to install 32 or 64 bit target
+	@echo Please make 'install32, install64, installpi or installarm' to install various targets
 	@echo
 
 # Must install as root; e.g. 'sudo make install'
@@ -65,6 +70,9 @@ install64: mphidflash64
 
 installpi: mphidflashpi
 	cp $(EXECPATH)/mphidflash-$(VERSION_MAIN).$(VERSION_SUB)-$(SYSTEM)-pi /usr/local/bin/mphidflash
+
+installpi: mphidflasharm
+	cp $(EXECPATH)/mphidflash-$(VERSION_MAIN).$(VERSION_SUB)-$(SYSTEM)-arm /usr/local/bin/mphidflash
 
 clean:
 	rm -f *.o core
